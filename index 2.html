@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOZ CHECKOUT PAYMENT</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1>MOZ CHECKOUT PAYMENT</h1>
+            <p>Checkout Para Ilustração Mentorados</p>
+        </div>
+
+        <!-- Main Checkout Card -->
+        <div class="checkout-card">
+            <!-- Form Header -->
+            <div class="form-header">
+                <h2>Informações de Pagamento</h2>
+                <p>Preencha os dados abaixo para finalizar</p>
+            </div>
+
+            <!-- Form Content -->
+            <div class="form-content">
+                <form id="checkoutForm">
+                    <!-- Personal Information Section -->
+                    <div class="section">
+                        <h3>Dados Pessoais</h3>
+                        
+                        <!-- Full Name Field -->
+                        <div class="form-group">
+                            <label for="fullName">Nome Completo *</label>
+                            <div class="input-container">
+                                <input type="text" id="fullName" name="fullName" placeholder="Digite seu nome completo" required>
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="error-message" id="fullNameError"></div>
+                        </div>
+
+                        <!-- Phone Number Field -->
+                        <div class="form-group">
+                            <label for="phone">Número de Telefone *</label>
+                            <div class="phone-container">
+                                <div class="country-code">+258</div>
+                                <input type="text" id="phone" name="phone" placeholder="84 123 4567" required>
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <p class="format-hint">Formato: 84 123 4567</p>
+                            <div class="error-message" id="phoneError"></div>
+                        </div>
+
+                        <!-- Email Field -->
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <div class="input-container">
+                                <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="error-message" id="emailError"></div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Method Selection -->
+                    <div class="section">
+                        <h3>Método de Pagamento</h3>
+                        
+                        <div class="payment-methods">
+                            <div class="payment-option">
+                                <input type="radio" id="visa" name="paymentMethod" value="visa">
+                                <label for="visa">
+                                    <div class="payment-card">
+                                        <i class="fab fa-cc-visa"></i>
+                                        <span>Visa</span>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="payment-option">
+                                <input type="radio" id="mastercard" name="paymentMethod" value="mastercard">
+                                <label for="mastercard">
+                                    <div class="payment-card">
+                                        <i class="fab fa-cc-mastercard"></i>
+                                        <span>MasterCard</span>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="payment-option">
+                                <input type="radio" id="mpesa" name="paymentMethod" value="mpesa">
+                                <label for="mpesa">
+                                    <div class="payment-card mpesa">
+                                        <i class="fas fa-mobile-alt"></i>
+                                        <span>M-Pesa</span>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="payment-option">
+                                <input type="radio" id="emola" name="paymentMethod" value="emola">
+                                <label for="emola">
+                                    <div class="payment-card emola">
+                                        <i class="fas fa-wallet"></i>
+                                        <span>e-Mola</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="error-message" id="paymentError"></div>
+                    </div>
+
+                    <!-- Order Summary -->
+                    <div class="order-summary">
+                        <h3>Resumo do Pedido</h3>
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span>2.500,00 MT</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Taxa de processamento</span>
+                            <span>50,00 MT</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total</span>
+                            <span>2.550,00 MT</span>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <i class="fas fa-lock"></i>
+                        Finalizar Compra
+                    </button>
+
+                    <!-- Security Notice -->
+                    <div class="security-notice">
+                        <i class="fas fa-shield-alt"></i>
+                        Seus dados estão protegidos com criptografia SSL
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="accepted-methods">
+                <span>Métodos aceitos:</span>
+                <div class="method-icons">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <div class="mpesa-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="emola-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                </div>
+            </div>
+            <p>&copy; 2024 MOZ Checkout. Todos os direitos reservados.</p>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fas fa-check-circle"></i>
+                <h2>Pagamento Processado</h2>
+            </div>
+            <p>Seu pedido foi processado com sucesso!</p>
+            <button onclick="closeModal()" class="modal-btn">OK</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
